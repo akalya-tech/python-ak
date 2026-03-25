@@ -1,0 +1,35 @@
+# Recursive Binary Search Program
+
+def binary_search(arr, left, right, key):
+    # Base condition
+    if right >= left:
+        mid = (left + right) // 2
+
+        # Element found
+        if arr[mid] == key:
+            return mid
+
+        # Search left half
+        elif arr[mid] > key:
+            return binary_search(arr, left, mid - 1, key)
+
+        # Search right half
+        else:
+            return binary_search(arr, mid + 1, right, key)
+
+    # Element not found
+    return -1
+
+
+# Main program
+numbers = [2, 5, 8, 12, 16, 23, 38, 45, 56, 72]
+
+print("List:", numbers)
+key = int(input("Enter number to search: "))
+
+result = binary_search(numbers, 0, len(numbers) - 1, key)
+
+if result != -1:
+    print("Element found at index:", result)
+else:
+    print("Element not found")
